@@ -1,6 +1,16 @@
 ---
 
 #
+# Install package
+#
+
+- name: Install hostapd
+  package: name=hostapd state=present
+
+- name: Install dnsmasq
+  package: name=dnsmasq state=present
+
+#
 # Configure interface
 #
 
