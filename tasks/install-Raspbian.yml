@@ -1,1 +1,9 @@
 ---
+
+#
+# Configure interface
+#
+
+- lineinfile: dest={{ interfaces_config_file }} regexp="^iface wlan0 inet" line="iface wlan0 inet static"
+- lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="address 192.168.2.99"
+- lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="netmask 255.255.255.0"
