@@ -17,3 +17,13 @@
 - lineinfile: dest={{ interfaces_config_file }} regexp="^iface wlan0 inet" line="iface wlan0 inet static"
 - lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="address 192.168.2.99"
 - lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="netmask 255.255.255.0"
+
+#
+# Configure hostapd
+#
+
+- lineinfile: dest={{ hostapd_default_file }} regexp="^DAEMON_CONF=" line="DAEMON_CONF="/etc/hostapd/hostapd.conf""
+
+- assert: { that: "hostapd_passphrase is defined" }
+
+- template: src=templates/hostapd.conf.j2  dest={{ hostapd_config_file }} owner=root group=root mode=0644

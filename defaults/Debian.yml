@@ -1,2 +1,21 @@
 ---
 interfaces_config_file: '/etc/network/interfaces'
+hostapd_default_file: '/etc/default/hostapd'
+hostapd_config_file: '/etc/hostapd/hostapd.conf'
+
+hostapd_interface: 'wlan0'
+hostapd_driver: 'nl80211'
+
+hostapd_ctrl_interface: '/var/run/hostapd'
+hostapd_ctrl_interface_group: '0'
+
+hostapd_ssid: 'RaspberryPi'
+hostapd_channel: '1'
+hostapd_hw_mode: 'g'
+hostapd_ieee80211n: '1'
+
+hostapd_wpa: '2'
+hostapd_wpa_key_mgmt: 'WPA-PSK'
+hostapd_wpa_pairwise: 'CCMP'
+hostapd_rsn_pairwise: 'CCMP'
+hostapd_country_code: 'DE'
