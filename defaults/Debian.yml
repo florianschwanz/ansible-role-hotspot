@@ -4,6 +4,7 @@ hostapd_default_file: '/etc/default/hostapd'
 hostapd_config_file: '/etc/hostapd/hostapd.conf'
 dnsmasq_conf_file: '/etc/dnsmasq.conf'
 sysctl_conf_file: '/etc/sysctl.conf'
+accesspoint_file: '/etc/network/if-up.d/accesspoint'
 
 hostapd_interface: 'wlan0'
 hostapd_driver: 'nl80211'
