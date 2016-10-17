@@ -34,3 +34,10 @@
 
 - lineinfile: dest={{ dnsmasq_conf_file }} regexp="^interface=" line="interface=wlan0"
 - lineinfile: dest={{ dnsmasq_conf_file }} regexp="^dhcp-range=" line="dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,12h"
+
+#
+# Restart services
+#
+
+- service: name=hostapd state=restarted
+- service: name=dnsmasq state=restarted
