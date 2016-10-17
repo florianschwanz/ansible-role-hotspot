@@ -41,3 +41,9 @@
 
 - service: name=hostapd state=restarted
 - service: name=dnsmasq state=restarted
+
+#
+# Configure sysctl
+#
+
+- lineinfile: dest={{ sysctl_conf_file }} regexp="^net\.ipv4\.ip\_forward=" line="net.ipv4.ip_forward=1"
