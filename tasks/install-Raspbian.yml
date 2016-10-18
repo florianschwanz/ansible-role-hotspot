@@ -47,6 +47,7 @@
 #
 
 - lineinfile: dest={{ sysctl_conf_file }} regexp="^net\.ipv4\.ip\_forward=" line="net.ipv4.ip_forward=1"
+- shell: "sysctl -p"
 
 #
 # Copy accesspoint
