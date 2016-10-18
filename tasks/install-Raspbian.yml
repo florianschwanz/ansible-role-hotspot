@@ -1,14 +1,11 @@
 ---
 
 #
-# Install package
+# Install packages
 #
 
-- name: Install hostapd
-  package: name=hostapd state=present
-
-- name: Install dnsmasq
-  package: name=dnsmasq state=present
+- package: name=hostapd state=present
+- package: name=dnsmasq state=present
 
 #
 # Configure interface
@@ -17,15 +14,15 @@
 - lineinfile: dest={{ interfaces_config_file }} regexp="^iface wlan0 inet" line="iface wlan0 inet static"
 - lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="address 192.168.2.99"
 - lineinfile: dest={{ interfaces_config_file }} insertafter="^iface wlan0 inet" line="netmask 255.255.255.0"
+- lineinfile: dest={{ interfaces_config_file }} regexp=".*wpa-conf.*" state=absent
+- lineinfile: dest={{ interfaces_config_file }} regexp=".*wlan1.*" state=absent
 
 #
 # Configure hostapd
 #
 
 - lineinfile: dest={{ hostapd_default_file }} regexp="^DAEMON_CONF=" line="DAEMON_CONF="/etc/hostapd/hostapd.conf""
-
 - assert: { that: "hostapd_passphrase is defined" }
-
 - template: src=templates/hostapd.conf.j2  dest={{ hostapd_config_file }} owner=root group=root mode=0644
 
 #
@@ -54,3 +51,4 @@
 #
 
 - copy: src=files/accesspoint dest={{ accesspoint_file }} owner=root group=root mode=0755
+- shell: "{{ accesspoint_file }}"
