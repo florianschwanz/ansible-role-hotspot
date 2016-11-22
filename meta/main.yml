@@ -1,1 +1,15 @@
 ---
+galaxy_info:
+  author: Florian Schwanz
+  description: Sets up a hotspot on a Raspberry Pi.
+  company: Interoberlin
+  license: GPLv3
+  min_ansible_version: 2.0
+  platforms:
+  - name: Raspbian
+    versions:
+    - 8
+  galaxy_tags:
+    - hotspot
+    - wifi
+dependencies:
