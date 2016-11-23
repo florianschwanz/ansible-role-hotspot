@@ -76,7 +76,7 @@ None.
 
     - hosts: all
       roles:
-        - { role: interoberlin.ansible-role-hotspot, hostapd_passphrase: mypassword }
+        - { role: interoberlin.hotspot, hostapd_passphrase: mypassword }
 
 ## License
 
